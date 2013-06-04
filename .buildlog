@@ -1,0 +1,35 @@
+---
+build.dart --machine --full
+[{"method":"mapping","params":{"from":"web/dartpoker.html","to":"web/out/dartpoker.html"}}]
+error unable to create symlink
+ target: /Users/andy.perkins/Documents/workspace/dart/dartpoker/packages
+ link:web/out/packages
+subprocess stdout:
+
+subprocess stderr:
+ln: web/out/packages: File exists
+
+Total time spent on web/dartpoker.html                       -- 397 ms
+Total time                                                   -- 425 ms
+build.dart finished [680 ms]
+
+---
+build.dart --machine --changed=web/out/dartpoker.css --changed=web/out/dartpoker.dart --changed=web/out/dartpok...
+Total time                                                   --  24 ms
+build.dart finished [265 ms]
+
+---
+build.dart --machine --changed=pubspec.lock
+Total time                                                   --  23 ms
+build.dart finished [263 ms]
+
+---
+build.dart --machine --changed=pubspec.lock
+Total time                                                   --  23 ms
+build.dart finished [247 ms]
+
+---
+build.dart --machine --changed=pubspec.lock
+Total time                                                   --  21 ms
+build.dart finished [252 ms]
+

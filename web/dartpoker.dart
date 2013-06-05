@@ -12,4 +12,10 @@ void main()
   //useShadowDom = true;
   Dealer d = new Dealer( ) ;
 
+  d.printDeck( ) ;
+
+  print("******************SHUFFLE************************") ;
+  d.shuffle( ) ;
+
+  d.printDeck( ) ;
 }

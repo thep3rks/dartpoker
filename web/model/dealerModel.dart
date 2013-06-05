@@ -2,15 +2,23 @@ import 'cards.dart' ;
 
 class Dealer
 {
-  Stack stack ;
+  Stack deck ;
 
   Dealer( )
   {
-    this.stack = new Stack( 1 ) ;
+    this.deck = new Stack( 1 ) ;
+  }
 
-    for ( int i = 0; i < stack.cards.length; i++ )
+  shuffle( [int n = 1] )
+  {
+    this.deck.shuffle( n ) ;
+  }
+
+  printDeck( )
+  {
+    for ( int i = 0; i < deck.cards.length; i++ )
     {
-      Card currentCard = stack.cards[ i ] ;
+      Card currentCard = deck.cards[ i ] ;
 
       print( currentCard.toString() ) ;
     }

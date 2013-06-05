@@ -2,6 +2,12 @@ library playin ;
 
 import 'dart:math' as math;
 
+//////////////////////////////////////////////
+///                                        ///
+/// Card                                   ///
+///                                        ///
+//////////////////////////////////////////////
+
 class Card
 {
   String suit ;
@@ -13,9 +19,15 @@ class Card
 
   String toString( )
   {
-    return "${this.suit} , ${this.rank}" ;
+    return "${this.suit}, ${this.rank}" ;
   }
 }
+
+//////////////////////////////////////////////
+///                                        ///
+/// Stack                                  ///
+///                                        ///
+//////////////////////////////////////////////
 
 class Stack
 {
@@ -30,7 +42,12 @@ class Stack
   ///                                        ///
   //////////////////////////////////////////////
 
-  Stack( int n )
+  Stack(  )
+  {
+    this.cards = [ ];
+  }
+
+  Stack.newDeck( int n )
   {
     this.makeDeck( n ) ;
   }
@@ -48,7 +65,7 @@ class Stack
 
     // Set array of cards.
 
-    this.cards = new List( totalDecks * totalCards ) ;
+    this.cards = [ ]  ;
 
     // Fill the array with 'n' packs of cards.
 
@@ -58,7 +75,7 @@ class Stack
       {
         for (k = 0; k < ranks.length; k++)
         {
-          this.cards[i * totalCards + j * ranks.length + k] = new Card( suits[j], ranks[k] );
+          this.cards.add( new Card( suits[j], ranks[k] ) ) ;
         }
       }
     }

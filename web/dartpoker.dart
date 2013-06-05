@@ -1,5 +1,6 @@
 import 'dart:html';
-import 'model/dealerModel.dart';
+import 'model/actors.dart';
+import 'model/cards.dart';
 import 'package:web_ui/web_ui.dart';
 
 /**
@@ -11,11 +12,20 @@ void main()
   // Enable this to use Shadow DOM in the browser.
   //useShadowDom = true;
   Dealer d = new Dealer( ) ;
+  Player p = new Player( ) ;
 
   d.printDeck( ) ;
 
-  print("******************SHUFFLE************************") ;
   d.shuffle( ) ;
 
+  d.printDeck( ) ;
+
+  p.addCard( d.deal( ) ) ;
+  p.addCard( d.deal( ) ) ;
+  p.addCard( d.deal( ) ) ;
+  p.addCard( d.deal( ) ) ;
+  p.addCard( d.deal( ) ) ;
+
+  p.printHand( ) ;
   d.printDeck( ) ;
 }

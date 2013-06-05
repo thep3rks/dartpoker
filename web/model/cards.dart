@@ -1,6 +1,21 @@
-import 'card-vo.dart' ;
+library playin ;
 
 import 'dart:math' as math;
+
+class Card
+{
+  String suit ;
+  String rank ;
+
+  Card( this.suit, this.rank )
+  {
+  }
+
+  String toString( )
+  {
+    return "${this.suit} , ${this.rank}" ;
+  }
+}
 
 class Stack
 {
@@ -15,9 +30,9 @@ class Stack
   ///                                        ///
   //////////////////////////////////////////////
 
-  Stack(  )
+  Stack( int n )
   {
-    this.makeDeck( 1 ) ;
+    this.makeDeck( n ) ;
   }
 
   //////////////////////////////////////////////
@@ -26,7 +41,7 @@ class Stack
   ///                                        ///
   //////////////////////////////////////////////
 
-  makeDeck( totalDecks )
+  makeDeck( int totalDecks )
   {
     int i, j, k ;
     int totalCards = ranks.length * suits.length ;
@@ -43,15 +58,13 @@ class Stack
       {
         for (k = 0; k < ranks.length; k++)
         {
-          this.cards[i * totalCards + j * ranks.length + k] =
-
-          new Card( ranks[k], suits[j] );
+          this.cards[i * totalCards + j * ranks.length + k] = new Card( suits[j], ranks[k] );
         }
       }
     }
   }
 
-  shuffle( n )
+  shuffle( int n )
   {
     var temp;
     var i, j, k;
@@ -76,7 +89,7 @@ class Stack
     return this.draw( 0 ) ;
   }
 
-  draw( n )
+  draw( int n )
   {
     Card card ;
 

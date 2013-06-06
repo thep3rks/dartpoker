@@ -128,6 +128,4 @@ class Stack
   {
     this.cards.add( card ) ;
   }
-
-
 }

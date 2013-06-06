@@ -1,6 +1,6 @@
 import 'dart:html';
 import 'model/actors.dart';
-import 'model/cards.dart';
+import 'model/cardsModel.dart';
 import 'package:web_ui/web_ui.dart';
 
 /**

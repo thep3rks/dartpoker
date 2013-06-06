@@ -1,8 +1,6 @@
-import 'cards.dart' ;
+import 'cardsModel.dart' ;
 import 'dart:html';
 import 'dart:async';
-
-import 'package:event_stream/event_stream.dart';
 
 //////////////////////////////////////////////
 ///                                        ///

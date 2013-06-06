@@ -11,43 +11,24 @@ void main()
 {
   // Enable this to use Shadow DOM in the browser.
   //useShadowDom = true;
+
+  init( ) ;
+}
+
+init( )
+{
+  // Creare Model classes
   Dealer d = new Dealer( ) ;
   Player p1 = d.createPlayer() ;
-  Player p2 = d.createPlayer() ;
-  Player p3 = d.createPlayer() ;
-  Player p4 = d.createPlayer() ;
-  Player p5 = d.createPlayer() ;
 
-  d.printDeck( ) ;
+  // Create Views
+
 
   d.shuffle( ) ;
 
-  d.printDeck( ) ;
+  d.onDealComplete.listen( (_) => print("Deal Complete") ) ;
 
-  d.dealToAllPlayers( 3 ) ;
-
-  p1.printHand( ) ;
-  p2.printHand( ) ;
-  p3.printHand( ) ;
-  p4.printHand( ) ;
-  p5.printHand( ) ;
-
-  d.printDeck( ) ;
-
-  d.resetGame( true ) ;
-
-  d.printDeck( ) ;
-
-  d.removePlayer( p2 ) ;
-  p2 = null ;
-  d.removePlayer( p4 ) ;
-  p4 = null ;
-
-  d.dealToAllPlayers( 4 ) ;
+  d.dealToAllPlayers( 5 ) ;
 
   p1.printHand( ) ;
-  p3.printHand( ) ;
-  p5.printHand( ) ;
-
-  d.printDeck( ) ;
 }

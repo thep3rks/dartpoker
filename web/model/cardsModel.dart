@@ -8,12 +8,12 @@ import 'dart:math' as math;
 ///                                        ///
 //////////////////////////////////////////////
 
-class Card
+class CardVO
 {
   String suit ;
   String rank ;
 
-  Card( this.suit, this.rank )
+  CardVO( this.suit, this.rank )
   {
   }
 
@@ -75,7 +75,7 @@ class Stack
       {
         for (k = 0; k < ranks.length; k++)
         {
-          this.cards.add( new Card( suits[j], ranks[k] ) ) ;
+          this.cards.add( new CardVO( suits[j], ranks[k] ) ) ;
         }
       }
     }
@@ -109,7 +109,7 @@ class Stack
 
   draw( int n )
   {
-    Card card ;
+    CardVO card ;
 
     if (n >= 0 && n < this.cards.length)
     {

@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>Sample app</title>
-    <link rel="stylesheet" href="css/cards/cards.css">
+    <!--<link rel="stylesheet" href="css/cards/cards.css">-->
     <link rel="stylesheet" href="css/dartpoker.css">
   </head>
   <body>
@@ -14,11 +14,11 @@
 
     <p>A Video Poker game made with Dart</p>
 
-    <div id="game_board">
-      <div class="playingCards [fourColours|faceImages|simpleCards|inText|rotateHand]">
-        <ul class="table">
-        <li>
-            <a class="card rank-2 diams" href="#">
+    <div id="game-board">
+     <!-- <div class="playingCards [fourColours|faceImages|simpleCards|inText|rotateHand]"> -->
+        <ul id="card-table" class="card-table">
+     <!--<li>
+         <a class="card rank-2 diams" href="#">
                 <span class="rank">2</span>
                 <span class="suit">&diams;</span>
             </a>
@@ -63,9 +63,9 @@
                 <span class="suit">&spades;</span>
                 <input type="checkbox" name="c-9S" id="c-9S" value="select" />
             </label>
-        </li>
+        </li> -->
     </ul>
-      </div>
+     <!-- </div> -->
     </div>
 
     <script type="application/dart" src="dartpoker.dart"></script>

@@ -1,4 +1,4 @@
-library playin ;
+library playingCards ;
 
 import 'dart:math' as math;
 
@@ -8,12 +8,12 @@ import 'dart:math' as math;
 ///                                        ///
 //////////////////////////////////////////////
 
-class Card
+class CardVO
 {
   String suit ;
   String rank ;
 
-  Card( this.suit, this.rank )
+  CardVO( this.suit, this.rank )
   {
   }
 
@@ -31,8 +31,8 @@ class Card
 
 class Stack
 {
-  static List ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] ;
-  static List suits = ["C", "D", "H", "S"] ;
+  static List ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k", "a"] ;
+  static List suits = ["clubs", "diams", "hearts", "spades"] ;
 
   List cards ;
 
@@ -75,7 +75,7 @@ class Stack
       {
         for (k = 0; k < ranks.length; k++)
         {
-          this.cards.add( new Card( suits[j], ranks[k] ) ) ;
+          this.cards.add( new CardVO( suits[j], ranks[k] ) ) ;
         }
       }
     }
@@ -109,7 +109,7 @@ class Stack
 
   draw( int n )
   {
-    Card card ;
+    CardVO card ;
 
     if (n >= 0 && n < this.cards.length)
     {
@@ -128,6 +128,4 @@ class Stack
   {
     this.cards.add( card ) ;
   }
-
-
 }

@@ -1,4 +1,6 @@
-import 'cards.dart' ;
+library actors ;
+
+import 'cardsModel.dart' ;
 import 'dart:html';
 import 'dart:async';
 
@@ -14,6 +16,9 @@ class Dealer
 {
   Stack deck ;
   List players ;
+
+  final EventStream _onDealCompleteEvent = new EventStream( );
+  Stream get onDealComplete => _onDealCompleteEvent.stream;
 
   //////////////////////////////////////////////
   ///                                        ///
@@ -56,9 +61,11 @@ class Dealer
         p.addCard( this.deal( ) ) ;
       }
     }
+
+    this._onDealCompleteEvent.signal( ) ;
   }
 
-  Card deal( )
+  CardVO deal( )
   {
     return this.deck.deal( ) ;
   }
@@ -84,7 +91,7 @@ class Dealer
 
     for ( int i = 0; i < deck.cards.length; i++ )
     {
-      Card currentCard = deck.cards[ i ] ;
+      CardVO currentCard = deck.cards[ i ] ;
 
       print( currentCard.toString() ) ;
     }
@@ -106,7 +113,7 @@ class Player
     this.hand = new Stack( ) ;
   }
 
-  addCard( Card card )
+  addCard( CardVO card )
   {
     this.hand.addCard( card ) ;
   }
@@ -133,7 +140,7 @@ class Player
 
     for ( int i = 0; i < hand.cards.length; i++ )
     {
-      Card currentCard = hand.cards[ i ] ;
+      CardVO currentCard = hand.cards[ i ] ;
 
       print( currentCard.toString() ) ;
     }

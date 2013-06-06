@@ -10,17 +10,11 @@ import 'package:event_stream/event_stream.dart';
 ///                                        ///
 //////////////////////////////////////////////
 
-class Dealer implements NotifyPropertyChanged
+class Dealer
 {
   static const String RESET_GAME = "RESET_GAME" ;
 
   Stack deck ;
-  StreamController dealerEvents ;
-
-  final EventStream<PropertyChangedEventArgs> _onPropertyChangedEvent =
-                            new EventStream<PropertyChangedEventArgs>();
-
-  Stream<PropertyChangedEventArgs> get onPropertyChanged => _onPropertyChangedEvent.stream;
 
   final EventStream _onResetEvent = new EventStream();
   Stream get onReset => _onResetEvent.stream;
@@ -48,6 +42,8 @@ class Dealer implements NotifyPropertyChanged
 
   resetGame( bool shuffle )
   {
+    print( "************ RESET GAME **************" );
+
     // Destroy the current deck, recreate a new one, shuffle if shuffle = true
     this.deck = new Stack.newDeck( 1 ) ;
 

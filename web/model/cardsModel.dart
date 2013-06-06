@@ -1,4 +1,4 @@
-library playin ;
+library playingCards ;
 
 import 'dart:math' as math;
 
@@ -31,8 +31,8 @@ class CardVO
 
 class Stack
 {
-  static List ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] ;
-  static List suits = ["C", "D", "H", "S"] ;
+  static List ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k", "a"] ;
+  static List suits = ["clubs", "diams", "hearts", "spades"] ;
 
   List cards ;
 

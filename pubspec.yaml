@@ -1,5 +1,5 @@
 name: dartpoker
-description: A sample WebUI application
+description: A Video Poker Game made with Dart
 dependencies:
   browser: any
   event_stream: any

@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'model/actors.dart';
 import 'model/cardsModel.dart';
+import 'view/cardViewItem.dart';
 import 'package:web_ui/web_ui.dart';
 
 /**
@@ -20,7 +21,7 @@ void main()
 
 init( )
 {
-  cardTable = query('#card-table') ;
+  cardTable = query('#card_table') ;
 
   // Creare Model classes
   Dealer d = new Dealer( ) ;
@@ -41,9 +42,12 @@ createView( Player p )
 {
   for( CardVO c in p.hand.cards )
   {
-    var cardElement = new LIElement( ) ;
-        cardElement.text = c.toString( ) ;
-
+//    var cardElement = new LIElement( ) ;
+//        cardElement.text = c.toString( ) ;
+    
+      CardViewItem cvi = new CardViewItem( c ) ;
+      LIElement cardElement = cvi.cardElement ;
+      
     cardTable.children.add( cardElement ) ;
   }
 }

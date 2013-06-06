@@ -25,8 +25,8 @@ void main()
   // Enable this to use Shadow DOM in the browser.
   //useShadowDom = true;
   Dealer d = new Dealer( ) ;
-  Player p1 = new Player( d ) ;
-  Player p2 = new Player( d ) ;
+  Player p1 = d.createAndAddPlayer() ;
+  Player p2 = d.createAndAddPlayer() ;
 
   d.printDeck( ) ;
 
@@ -34,17 +34,7 @@ void main()
 
   d.printDeck( ) ;
 
-  p1.addCard( d.deal( ) ) ;
-  p1.addCard( d.deal( ) ) ;
-  p1.addCard( d.deal( ) ) ;
-  p1.addCard( d.deal( ) ) ;
-  p1.addCard( d.deal( ) ) ;
-
-  p2.addCard( d.deal( ) ) ;
-  p2.addCard( d.deal( ) ) ;
-  p2.addCard( d.deal( ) ) ;
-  p2.addCard( d.deal( ) ) ;
-  p2.addCard( d.deal( ) ) ;
+  d.dealToAllPlayers( 10 ) ;
 
   p1.printHand( ) ;
   p2.printHand( ) ;

@@ -12,12 +12,8 @@ import 'package:event_stream/event_stream.dart';
 
 class Dealer
 {
-  static const String RESET_GAME = "RESET_GAME" ;
-
   Stack deck ;
-
-  final EventStream _onResetEvent = new EventStream();
-  Stream get onReset => _onResetEvent.stream;
+  List players ;
 
   //////////////////////////////////////////////
   ///                                        ///
@@ -30,9 +26,30 @@ class Dealer
     this.deck = new Stack.newDeck( 1 ) ;
   }
 
+  Player createAndAddPlayer( )
+  {
+    if (this.players == null ) this.players = [ ] ;
+
+    Player p = new Player( ) ;
+    this.players.add( p ) ;
+
+    return p ;
+  }
+
   shuffle( [int n = 1] )
   {
     this.deck.shuffle( n ) ;
+  }
+
+  dealToAllPlayers( [ int cardCount = 1 ] )
+  {
+    for( var i = 0; i < cardCount ; i++ )
+    {
+      for( Player p in this.players )
+      {
+        p.addCard( this.deal( ) ) ;
+      }
+    }
   }
 
   Card deal( )
@@ -49,8 +66,10 @@ class Dealer
 
     if( shuffle ) this.shuffle( 1 ) ;
 
-    // Notify all players to destroy any hands they may be carrying.
-    this._onResetEvent.signal( ) ;
+    for( Player p in this.players )
+    {
+      p.clearCards( ) ;
+    }
   }
 
   printDeck( )
@@ -75,15 +94,10 @@ class Dealer
 class Player
 {
   Stack hand;
-  Dealer dealer;
 
-  // Pass in reference to dealer so we can listen for dealer events where necessary
-  Player( Dealer dealer )
+  Player( )
   {
     this.hand = new Stack( ) ;
-    this.dealer = dealer ;
-
-    this.dealer.onReset.listen( (_) => clearCards( ) ) ;
   }
 
   addCard( Card card )

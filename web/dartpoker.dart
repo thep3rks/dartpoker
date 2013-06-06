@@ -12,7 +12,7 @@ void main()
   // Enable this to use Shadow DOM in the browser.
   //useShadowDom = true;
   Dealer d = new Dealer( ) ;
-  Player p = new Player( ) ;
+  Player p = new Player( d ) ;
 
   d.printDeck( ) ;
 
@@ -25,6 +25,11 @@ void main()
   p.addCard( d.deal( ) ) ;
   p.addCard( d.deal( ) ) ;
   p.addCard( d.deal( ) ) ;
+
+  p.printHand( ) ;
+  d.printDeck( ) ;
+
+  d.resetGame( true ) ;
 
   p.printHand( ) ;
   d.printDeck( ) ;

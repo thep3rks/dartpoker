@@ -2,5 +2,6 @@ name: dartpoker
 description: A sample WebUI application
 dependencies:
   browser: any
+  event_stream: any
   js: any
   web_ui: any

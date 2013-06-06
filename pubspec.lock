@@ -17,6 +17,10 @@ packages:
     description: csslib
     source: hosted
     version: "0.4.7+3"
+  event_stream:
+    description: event_stream
+    source: hosted
+    version: "0.2.1"
   html5lib:
     description: html5lib
     source: hosted

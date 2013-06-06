@@ -2,23 +2,38 @@ import 'cards.dart' ;
 import 'dart:html';
 import 'dart:async';
 
+import 'package:event_stream/event_stream.dart';
+
 //////////////////////////////////////////////
 ///                                        ///
 /// Dealer                                 ///
 ///                                        ///
 //////////////////////////////////////////////
 
-class Dealer
+class Dealer implements NotifyPropertyChanged
 {
   static const String RESET_GAME = "RESET_GAME" ;
 
   Stack deck ;
   StreamController dealerEvents ;
 
+  final EventStream<PropertyChangedEventArgs> _onPropertyChangedEvent =
+                            new EventStream<PropertyChangedEventArgs>();
+
+  Stream<PropertyChangedEventArgs> get onPropertyChanged => _onPropertyChangedEvent.stream;
+
+  final EventStream _onResetEvent = new EventStream();
+  Stream get onReset => _onResetEvent.stream;
+
+  //////////////////////////////////////////////
+  ///                                        ///
+  /// Constructor                            ///
+  ///                                        ///
+  //////////////////////////////////////////////
+
   Dealer( )
   {
     this.deck = new Stack.newDeck( 1 ) ;
-    this.dealerEvents = new StreamController( );
   }
 
   shuffle( [int n = 1] )
@@ -34,9 +49,12 @@ class Dealer
   resetGame( bool shuffle )
   {
     // Destroy the current deck, recreate a new one, shuffle if shuffle = true
+    this.deck = new Stack.newDeck( 1 ) ;
+
+    if( shuffle ) this.shuffle( 1 ) ;
 
     // Notify all players to destroy any hands they may be carrying.
-    dealerEvents.add( new CustomEvent( RESET_GAME ) ) ;
+    this._onResetEvent.signal( ) ;
   }
 
   printDeck( )
@@ -68,8 +86,8 @@ class Player
   {
     this.hand = new Stack( ) ;
     this.dealer = dealer ;
-    // this.dealer.dealerEvents.stream.every(test)
-    //any( Dealer.RESET_GAME ) => clearCards( ) ;
+
+    this.dealer.onReset.listen( (_) => clearCards( ) ) ;
   }
 
   addCard( Card card )

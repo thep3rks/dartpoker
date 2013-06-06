@@ -26,7 +26,7 @@ class Dealer
     this.deck = new Stack.newDeck( 1 ) ;
   }
 
-  Player createAndAddPlayer( )
+  Player createPlayer( )
   {
     if (this.players == null ) this.players = [ ] ;
 
@@ -34,6 +34,12 @@ class Dealer
     this.players.add( p ) ;
 
     return p ;
+  }
+
+  removePlayer( Player p )
+  {
+    this.players.remove( p ) ;
+    p.destroy( ) ;
   }
 
   shuffle( [int n = 1] )
@@ -68,7 +74,7 @@ class Dealer
 
     for( Player p in this.players )
     {
-      p.clearCards( ) ;
+      p.clearCards( true ) ;
     }
   }
 
@@ -105,14 +111,20 @@ class Player
     this.hand.addCard( card ) ;
   }
 
-  clearCards( )
+  clearCards( bool reset )
   {
     for ( int i = 0; i < hand.cards.length; i++ )
     {
       hand.cards[ i ] = null ;
     }
 
-    this.hand = new Stack( ) ;
+    if (reset) this.hand = new Stack( ) ;
+  }
+
+  destroy( )
+  {
+    this.clearCards( false ) ;
+    this.hand = null ;
   }
 
   printHand( )

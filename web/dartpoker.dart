@@ -11,6 +11,7 @@ import 'package:web_ui/web_ui.dart';
 
 UListElement cardTable ;
 DivElement gameBoard ;
+DivElement controlsPanel ;
 ButtonElement dealCardsBtn ;
 ButtonElement resetGameBtn ;
 
@@ -27,7 +28,8 @@ void main()
 init( )
 {
   cardTable = query('#card_table') ;
-  gameBoard = query( '#game_board' ) ;
+  gameBoard = query('#game_board') ;
+  controlsPanel = query('#controls_panel') ;
 
   // Creare Model classes
   d = new Dealer( ) ;
@@ -40,7 +42,7 @@ init( )
   ///d.dealToAllPlayers( 5 ) ;
 
   p1.printHand( ) ;
-  
+
   createButtons( ) ;
 }
 
@@ -48,31 +50,34 @@ createButtons( )
 {
   dealCardsBtn = new ButtonElement( ) ;
   dealCardsBtn.text = "Deal";
-  
+
   //TODO: Need to either clear between deals or check for existing
   //      before rendering new state
   dealCardsBtn.onClick.listen( ( e ) => d.dealToAllPlayers( 5 ) );
-  
+
   resetGameBtn = new ButtonElement( ) ;
   resetGameBtn.text = "Reset";
   resetGameBtn.onClick.listen( ( e ) => clearCards( ) );
-  
-  gameBoard.children.add( dealCardsBtn ) ;
-  gameBoard.children.add( resetGameBtn ) ;
+
+  controlsPanel.children.add( dealCardsBtn ) ;
+  controlsPanel.children.add( resetGameBtn ) ;
 }
 
 clearCards( )
 {
   cardTable.children.clear( ) ;
-  
+
   d.resetGame( true ) ;
 }
 
 createView( Player p )
 {
+  var cv = cardTable.children ;
+  cv.clear( ) ;
+
   for( CardVO c in p.hand.cards )
   {
     CardViewItem cvi = new CardViewItem( c ) ;
-    cardTable.children.add( cvi.cardElement ) ;
+    cv.add( cvi.cardElement ) ;
   }
 }

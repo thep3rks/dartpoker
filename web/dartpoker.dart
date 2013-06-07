@@ -41,8 +41,6 @@ init( )
 
   ///d.dealToAllPlayers( 5 ) ;
 
-  p1.printHand( ) ;
-
   createButtons( ) ;
 }
 

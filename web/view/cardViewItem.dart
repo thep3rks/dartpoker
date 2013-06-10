@@ -17,9 +17,9 @@ class CardViewItem
 
   CardViewItem( CardVO c )
   {
-     this.cardElement = new LIElement() ;
+     this.cardElement = new LIElement();
 
-     DivElement de = new DivElement();
+     LabelElement de = new LabelElement();
 
      String divClass = "card rank-${c.rank} ${c.suit}" ;
 
@@ -27,14 +27,17 @@ class CardViewItem
 
      SpanElement s1 = new SpanElement();
      s1.classes.add( "rank");
-     s1.text = c.rank.toUpperCase() ;
+     s1.text = c.rank.toUpperCase();
 
      SpanElement s2 = new SpanElement();
      s2.classes.add( "suit" );
      s2.innerHtml = "&${c.suit};" ;
 
+     CheckboxInputElement checkbox = new CheckboxInputElement();
+
      de.children.add( s1 ) ;
      de.children.add( s2 ) ;
+     de.children.add( checkbox ) ;
 
      this.cardElement.children.add( de ) ;
   }

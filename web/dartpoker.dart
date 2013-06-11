@@ -14,6 +14,7 @@ DivElement gameBoard ;
 DivElement controlsPanel ;
 ButtonElement dealCardsBtn ;
 ButtonElement resetGameBtn ;
+ButtonElement checkHeldBtn ;
 
 Dealer d;
 
@@ -57,8 +58,13 @@ createButtons( )
   resetGameBtn.text = "Reset";
   resetGameBtn.onClick.listen( ( e ) => clearCards( ) );
 
+  checkHeldBtn = new ButtonElement( ) ;
+  checkHeldBtn.text = "Check Held";
+  checkHeldBtn.onClick.listen( ( e ) => checkHeld( d.players[ 0 ] ) );
+
   controlsPanel.children.add( dealCardsBtn ) ;
   controlsPanel.children.add( resetGameBtn ) ;
+  controlsPanel.children.add( checkHeldBtn ) ;
 }
 
 clearCards( )
@@ -66,6 +72,14 @@ clearCards( )
   cardTable.children.clear( ) ;
 
   d.resetGame( true ) ;
+}
+
+checkHeld( Player p )
+{
+  for( CardVO c in p.hand.cards )
+  {
+    print("${c.toString()}, ${c.cardView.isSelected}");
+  }
 }
 
 createView( Player p )
@@ -76,6 +90,7 @@ createView( Player p )
   for( CardVO c in p.hand.cards )
   {
     CardViewItem cvi = new CardViewItem( c ) ;
+    c.addView( cvi ) ;
     cv.add( cvi.cardElement ) ;
   }
 }

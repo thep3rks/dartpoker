@@ -31,3 +31,8 @@ h1, p {
 #controls_panel button {
   font-size: 16pt;
 }
+
+.card_checkbox  {
+  /*This will be where we make a proper select button*/
+  text-align: center ;
+}

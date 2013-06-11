@@ -30,4 +30,7 @@ h1, p {
 #controls_panel button {
   font-size: 16pt;
 }
+.card_checkbox {
+  text-align: center;
+}
 

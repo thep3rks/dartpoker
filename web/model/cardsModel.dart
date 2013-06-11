@@ -1,6 +1,7 @@
 library playingCards ;
 
 import 'dart:math' as math;
+import '../view/cardViewItem.dart' ;
 
 //////////////////////////////////////////////
 ///                                        ///
@@ -12,9 +13,16 @@ class CardVO
 {
   String suit ;
   String rank ;
+  CardViewItem cardView;
 
   CardVO( this.suit, this.rank )
   {
+  }
+
+  // TODO: This isn't right, need to figure out custom elements.
+  addView( CardViewItem cvi )
+  {
+    this.cardView = cvi ;
   }
 
   String toString( )
